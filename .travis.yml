@@ -1,0 +1,16 @@
+deploy:
+  provider: heroku
+  api_key:
+    secure: FMzepNdfCcnynls3N9aLvEhZgtHfMN6Qxtv+3aTFgKG7pYQDWfmENXzqEFDBtxtK9pxJSjzqkksSHpcIBTISMkFeGtJf7Xp331byz2c6OyaEaZK5sdNjsyGfJ6PAFghONiJ0Bt9/24t6CoOvOncbkJs7e0SHc1I5PjeLLBa2uxYymYUQX5QYdzbbikhEW92UnaKuyCdbcADHtbpaHsxJHJswpGSTydaD9udUs4ErrUOFlySsKBT8lTnr+XlFRd+vDT0WHRujWQutQTHGiYX08h+zYTkYR7bGZixenIDCHnf0Yt903iSx1HtsoNNg3S9/NcJcn91hmLZJ7hoKUP/DrcAtatvIbJeNVuoLMEv5DvWYhddz6hRzoYJDfuR89P+NCLQQ8XWU+EXmI1jNA8pTC5CbfE9rFP7rouuYzwLyVZelqZVEDMhGi3eC2NanDjJllk18OgNqLkMWyVTNA+CnolwU5EC0wJaSdcySz9+w3akzsh2XgdrxRI+RQKf2bXACazS7wCJRTFmk8xl6vx5Rd4sJigznuqNnh5Fdlb9lTUyVjFsLDGjQqyY1m1wpVoLN8FE/XPNZTMlruu8m78m5/BSbKPsdPoN7JVsG2E2aM4VduNhRayzhw6hrhmT9zz7OOzauyBdly+RJydmH+DQe0RbcJS9pLkuCWd5eDGZeCwk=
+  app: pure-caverns-51407
+  on:
+    repo: Diggsiii/raddit
+
+language: ruby
+rvm:
+  - 2.2.2
+addons:
+  postgresql: "9.4"
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
